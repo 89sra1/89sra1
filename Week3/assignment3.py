@@ -33,3 +33,8 @@ class SimpleQueue:
     def popleft(self) -> Any:
         value = self._tail.value
         self._tail = self._tail.next
+        try:
+            self._tail.prev = None
+        except AttributeError:
+            self._head = None
+        return value
