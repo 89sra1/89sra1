@@ -26,7 +26,10 @@ class SimpleQueue:
         return self._head is not None
 
     def append(self, value: Any) -> None:
-        raise NotImplementedError("Assignment 3 not complete")
+        new_node = Node(value)
+        new_node.prev = self._head
+        self._head.next = new_node
 
     def popleft(self) -> Any:
-        raise NotImplementedError("Assignment 3 not complete")
+        value = self._tail.value
+        self._tail = self._tail.next
