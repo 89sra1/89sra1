@@ -27,8 +27,12 @@ class SimpleQueue:
 
     def append(self, value: Any) -> None:
         new_node = Node(value)
-        new_node.prev = self._head
-        self._head.next = new_node
+        try:
+            new_node.prev = self._head
+            self._head.next = new_node
+        except AttributeError:
+            self._tail = new_node
+        self._head = new_node
 
     def popleft(self) -> Any:
         value = self._tail.value
