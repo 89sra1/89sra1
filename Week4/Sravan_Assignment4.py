@@ -28,7 +28,7 @@ def main():
             print("final operation before close")
         print(sys.getsizeof(text), "Bytes are used by the list")
     except FileNotFoundError:
-        print("No such file present")
+        print("No such file found in the directory")
 
 
 if __name__ == "__main__":
