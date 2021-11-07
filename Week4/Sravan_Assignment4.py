@@ -18,14 +18,17 @@ def main():
             print("file is opened and fetched")
             return self._file
 
-        def __exit__(self):
+        def __exit__(self, exc_type, exc_val, exc_tb):
             print("closing the file")
             self._file.close()
 
-    with MyFileContextManager("FILENAME", "r") as f:
-        text = f.read()
-        print("file is done with the operation given by user")
-    print(sys.getsizeof(text), "Bytes are used by the list")
+    try:
+        with MyFileContextManager("eng_vocab.txt", "r") as f:
+            text = f.read()
+            print("final operation before close")
+        print(sys.getsizeof(text), "Bytes are used by the list")
+    except FileNotFoundError:
+        print("No such file present")
 
 
 if __name__ == "__main__":
