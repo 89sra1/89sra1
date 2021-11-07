@@ -1,4 +1,5 @@
 import sys
+import time
 
 FILENAME = "eng_vocab.txt"
 
@@ -15,7 +16,7 @@ def my_generator(filename):
 
 def read_generator():
     size_of_file = my_generator(FILENAME)
-    print(sys.getsizeof(size_of_file), "Bytes are used by the list")
+    print(sys.getsizeof(size_of_file), "Bytes are used by the list(generator)")
 
 
 def main():
@@ -24,17 +25,14 @@ def main():
             self._file = open(filename, operation)
 
         def __enter__(self):
-            print("file is opened and fetched")
             return self._file
 
         def __exit__(self, exc_type, exc_val, exc_tb):
-            print("closing the file")
             self._file.close()
     try:
         with MyFileContextManager("eng_vocab.txt", "r") as f:
             text = f.read()
-            print("final operation before close")
-        print(sys.getsizeof(text), "Bytes are used by the list")
+        print(sys.getsizeof(text), "Bytes are used by the list(Context Manager)")
     except FileNotFoundError:
         print("No such file found in the directory")
 
