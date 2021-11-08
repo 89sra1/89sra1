@@ -11,7 +11,7 @@ class HasWeight(ABC):
 class Astronaut(HasWeight):
     def __init__(self, weight: int):
         if 50 <= weight <= 95:
-            self.weight = weight
+            self._weight = weight
         else:
             raise ValueError("Astronaut weight should be between 50 and 95 kg")
 
@@ -35,7 +35,7 @@ class Propellant(HasWeight):
 class AmmoniumDinitramide(Propellant):
     def __init__(self, weight: int):
         if 0 < weight <= 200:
-            self.weight = weight
+            self._weight = weight
         else:
             raise ValueError("Allowable Propellant weight is in between 1 and 200 kg")
 
@@ -45,17 +45,17 @@ class AmmoniumDinitramide(Propellant):
 
     @property
     def efficiency(self) -> int:
-        3
+        return 3
 
     @property
     def environmental_impact(self) -> int:
-        3
+        return 3
 
 
 class Hydrazine(Propellant):
     def __init__(self, weight: int):
         if 0 < weight <= 200:
-            self.weight = weight
+            self._weight = weight
         else:
             raise ValueError("Allowable Hydrazine weight is in between 1 and 200 kg")
 
@@ -65,11 +65,11 @@ class Hydrazine(Propellant):
 
     @property
     def efficiency(self) -> int:
-        10
+        return 10
 
     @property
     def environmental_impact(self) -> int:
-        20
+        return 20
 
 
 class Rocket(HasWeight):
