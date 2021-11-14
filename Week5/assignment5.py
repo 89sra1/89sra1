@@ -8,40 +8,37 @@ from queue import Queue
 # Header with user agent is needed to allow access for scraping
 HEADER = {'User-Agent': 'Mozilla/5.0'}
 URLS = ['https://www.volvocars.com/se',
-        # 'https://consid.se/'
-        # 'https://stackoverflow.com/',
-        'https://www.google.com/']
-
-
-# 'https://9gag.com/',
-# 'https://www.yahoo.com',
-# 'https://www.reddit.com',
-# 'https://www.youtube.com']
-# 'https://9gag.com/',
-# 'https://twitter.com/',
-# 'https://www.volvocars.com/se',
-# 'https://consid.se/',
-# 'https://www.reddit.com',
-# 'https://www.youtube.com']
-# 'https://stackoverflow.com',
-# 'https://www.aftonbladet.se/',
-# 'https://www.volvocars.com/se',
-# 'https://www.aftonbladet.se/',
-# 'https://www.volvocars.com/se',
-# 'https://www.yahoo.com',
-# 'https://consid.se/',
-# 'https://www.youtube.com',
-# 'https://9gag.com/',
-# 'https://stackoverflow.com/',
-# 'https://www.volvocars.com/se',
-# 'https://www.yahoo.com',
-# 'https://www.reddit.com/',
-# 'https://consid.se/',
-# 'https://9gag.com/',
-# 'https://twitter.com/',
-# 'https://stackoverflow.com/',
-# 'https://www.aftonbladet.se/',
-# 'https://twitter.com/']
+        #'https://consid.se/',
+        #'https://stackoverflow.com/',
+        'https://www.google.com/',
+        'https://9gag.com/',
+        'https://www.yahoo.com',
+        'https://www.reddit.com',
+        'https://www.youtube.com',
+        'https://9gag.com/',
+        'https://twitter.com/',
+        'https://www.volvocars.com/se',
+        #'https://consid.se/',
+        'https://www.reddit.com',
+        'https://www.youtube.com',
+        #'https://stackoverflow.com',
+        'https://www.aftonbladet.se/',
+        'https://www.volvocars.com/se',
+        'https://www.aftonbladet.se/',
+        'https://www.volvocars.com/se',
+        'https://www.yahoo.com',
+        #'https://consid.se/',
+        'https://www.youtube.com',
+        'https://9gag.com/',
+        #'https://stackoverflow.com/',
+        'https://www.volvocars.com/se',
+        'https://www.reddit.com/',
+        #'https://consid.se/',
+        'https://9gag.com/',
+        'https://twitter.com/',
+        #'https://stackoverflow.com/',
+        'https://www.aftonbladet.se/',
+        'https://twitter.com/']
 
 
 def timer(func):
