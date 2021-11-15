@@ -53,8 +53,8 @@ def timer(func):
     return timer_wrapper
 
 
-def request_and_open(URL):
-    request = Request(URL, headers=HEADER)
+def request_and_open(url):
+    request = Request(url, headers=HEADER)
     url_info_byte = urlopen(request, timeout=20).read()
     url_info_string = url_info_byte.decode("utf-8")
     return url_info_string
@@ -69,9 +69,8 @@ def request_single():
 @timer
 def request_pool(num_threads):
     with ThreadPoolExecutor(num_threads) as ex:
-        for url in URLS:
-            result = ex.map(request_and_open, URLS)
-        print(result)
+        result = ex.map(request_and_open, URLS)
+    print(result)
 
 
 @timer
