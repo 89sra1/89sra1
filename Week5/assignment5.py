@@ -68,29 +68,25 @@ def request_single():
 
 @timer
 def request_pool(num_threads):
-    request_pool_list = []
-    with ThreadPoolExecutor() as ex:
+    with ThreadPoolExecutor(num_threads) as ex:
         for url in URLS:
-            request_pool_list.append(ex.submit(request_and_open(url)))
-            num_threads = request_pool_list
-            result = ex.map(request_and_open, range(len(URLS)))
+            result = ex.map(request_and_open, URLS)
         print(result)
-        return num_threads
 
 
 @timer
 def request_queue(num_threads):
-    q = queue.Queue()
-
-    def worker():
-        while True:
-            urls = q.get()
-            request_and_open(urls)
-            q.task_done()
-
-    threading.Thread(target=worker, daemon=True).start()
+    q = Queue()
     for url in URLS:
         q.put(url)
+
+    def worker(q):
+        while not q.empty():
+            url = q.get()
+            request_and_open(url)
+            q.task_done()
+    for ws in range(num_threads):
+        threading.Thread(target=worker, args=(q,)).start()
     q.join()
     print("everything is done")
 
